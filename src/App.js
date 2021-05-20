@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 //컴포넌트 : react hooks로 인해 class형태에서 function형태로 바뀜
 
@@ -13,7 +13,7 @@ class App extends React.Component {
 
 //함수 컴포넌트
 function App() {
-
+  const [text, setText] = useState('Kossie');
   const onSubmit = () => {
     alert('submitted');
   }
@@ -24,6 +24,16 @@ function App() {
     }
   }
 
+  //let text = "Kossie";
+
+  const updateText = () => {
+    //text = "Coder";
+    setText('Coder');
+    console.log(text);
+  }
+
+  console.log(text);
+
   return (
     // JSX : JS를 확장한 문법
     // onClick={함수}
@@ -31,6 +41,11 @@ function App() {
     <div className="App">
       <input onKeyUp={onKeyUp}/>
       <button onClick={onSubmit}>Submit</button> 
+
+      <br/><br/>
+
+      <span>{text}</span>
+      <button onClick={updateText}>Update</button>
     </div>
   );
 }
