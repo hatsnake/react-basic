@@ -13,10 +13,24 @@ class App extends React.Component {
 
 //함수 컴포넌트
 function App() {
+
+  const onSubmit = () => {
+    alert('submitted');
+  }
+
+  const onKeyUp = (event) => {
+    if(event.keyCode === 13) {
+      onSubmit();
+    }
+  }
+
   return (
     // JSX : JS를 확장한 문법
+    // onClick={함수}
+    // JS Event를 카멜 표기법으로 사용가능
     <div className="App">
-      Kossie Coder
+      <input onKeyUp={onKeyUp}/>
+      <button onClick={onSubmit}>Submit</button> 
     </div>
   );
 }
