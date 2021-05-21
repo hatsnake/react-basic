@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 // https://www.youtube.com/watch?v=UFtirvA6NDU&list=PLB7CpjPWqHOuf62H44TMkMIsqfkIzcEcX&index=5
 
@@ -15,27 +15,26 @@ class App extends React.Component {
 
 //함수 컴포넌트
 function App() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const onSubmit = (event) => {
-    event.preventDefault();
-    console.log(username, password);
-  }
+  const [count, setCount] = useState(0);
+  const [kossie, setKossie] = useState(0);
+  useEffect(() => {
+    console.log(count);
+  }, [count, kossie]);
+  
+  //한번만 실행
+  useEffect(() => {
+    console.log('first rendering');
+  }, []);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
 
   return (
-    // JSX : JS를 확장한 문법
-    // onClick={함수}
-    // JS Event를 카멜 표기법으로 사용가능
     <div className="App">
-      <form onSubmit={onSubmit}>
-        <input type="text" placeholder="Username" 
-          value={username} onChange={(e) => setUsername(e.target.value)} />
-        <br/>
-        <input type="password" placeholder="Password" 
-          value={password} onChange={(e) => setPassword(e.target.value)} />
-        <br/>
-        <button type="submit">Login</button> 
-      </form>
+      <h1>Kossie Coder</h1>
+      <button onClick={increment}>Click</button>
+      <button onClick={() => setKossie(kossie + 1)}>Click</button>      
     </div>
   );
 }
