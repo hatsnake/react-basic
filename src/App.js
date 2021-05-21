@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import Counter from './components/Counter';
 
 // https://www.youtube.com/watch?v=UFtirvA6NDU&list=PLB7CpjPWqHOuf62H44TMkMIsqfkIzcEcX&index=5
 
@@ -16,20 +15,27 @@ class App extends React.Component {
 
 //함수 컴포넌트
 function App() {
-  const [condition, setCondition] = useState(false);
-  const toggle = () => setCondition(!condition);
-  useEffect(() => {
-    console.log(condition);
-  }, [condition])
+  const movies = [
+    { title: 'Kossie coder1', year: 2001 },
+    { title: 'Kossie coder2', year: 2002 },
+    { title: 'Kossie coder3', year: 2003 },
+  ];
 
-  const rederCondition = condition
-    ? 'True'
-    : 'False';
+  const renderMovies = movies.map(movie => {
+    //JSX형태로 리턴
+    return (
+      <div className="movie" key={movie.title}>
+        <div className="movie-title">{movie.title}</div>
+        <div className="movie-year">{movie.year}</div>
+      </div>
+    );
+  });
+
   return (
     <div className="App">
-      <h1>Kossie Coder</h1>
-      <div>{rederCondition}</div>
-      <button onClick={toggle}>Toggle</button>
+      <h1>Movie list</h1>
+
+      {renderMovies}
     </div>
   );
 }
