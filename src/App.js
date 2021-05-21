@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Counter from './components/Counter';
 
 // https://www.youtube.com/watch?v=UFtirvA6NDU&list=PLB7CpjPWqHOuf62H44TMkMIsqfkIzcEcX&index=5
@@ -16,19 +16,20 @@ class App extends React.Component {
 
 //함수 컴포넌트
 function App() {
-  const [buttonName, setButtonName] = useState('클릭');
+  const [condition, setCondition] = useState(false);
+  const toggle = () => setCondition(!condition);
+  useEffect(() => {
+    console.log(condition);
+  }, [condition])
 
-  const clickButton = () => {
-    setButtonName('click');
-  };
-
+  const rederCondition = condition
+    ? 'True'
+    : 'False';
   return (
     <div className="App">
       <h1>Kossie Coder</h1>
-      <Counter click="click1"/>
-      <Counter click={buttonName}/>
-      <Counter />
-      <button onClick={clickButton}>Click</button>
+      <div>{rederCondition}</div>
+      <button onClick={toggle}>Toggle</button>
     </div>
   );
 }
