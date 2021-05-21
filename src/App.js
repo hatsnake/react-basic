@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Counter from './components/Counter';
 
 // https://www.youtube.com/watch?v=UFtirvA6NDU&list=PLB7CpjPWqHOuf62H44TMkMIsqfkIzcEcX&index=5
@@ -16,12 +16,19 @@ class App extends React.Component {
 
 //함수 컴포넌트
 function App() {
+  const [buttonName, setButtonName] = useState('클릭');
+
+  const clickButton = () => {
+    setButtonName('click');
+  };
+
   return (
     <div className="App">
       <h1>Kossie Coder</h1>
+      <Counter click="click1"/>
+      <Counter click={buttonName}/>
       <Counter />
-      <Counter />
-      <Counter />
+      <button onClick={clickButton}>Click</button>
     </div>
   );
 }
