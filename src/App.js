@@ -17,19 +17,21 @@ class App extends React.Component {
 
 //함수 컴포넌트
 function App() {
-  const [movies, setMovies] = useState([
-    { title: 'Kossie coder1', year: 2001 },
-    { title: 'Kossie coder2', year: 2002 },
-    { title: 'Kossie coder3', year: 2003 },
-    { title: 'Kossie coder4', year: 2004 },
-  ]);
+  const [movies, setMovies] = useState([]);
 
-  const renderMovies = movies.map(movie => {
+
+  const removeMovie = (id) => {
+    setMovies(movies.filter(movie => {
+      return movie.id !== id;
+    }));
+  };
+
+  const renderMovies = movies.length ? movies.map(movie => {
     //JSX형태로 리턴
     return (
-      <Movie movie={movie} key={movie.title} />
+      <Movie movie={movie} key={movie.id} removeMovie={removeMovie} />
     );
-  });
+  }) : '영화가 없습니다.';
   
   const addMovie = (movie) => {
     setMovies([
