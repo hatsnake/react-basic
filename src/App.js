@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Movie from "./components/Movie";
 import MovieForm from './components/MovieForm';
+import Navbar from './components/Navbar';
 
 // https://www.youtube.com/watch?v=UFtirvA6NDU&list=PLB7CpjPWqHOuf62H44TMkMIsqfkIzcEcX&index=5
 
@@ -42,6 +43,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
       <h1>Movie list</h1>
       <MovieForm addMovie={addMovie} />
       {renderMovies}
