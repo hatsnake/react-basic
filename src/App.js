@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Navbar from './components/Navbar';
-import Users from './pages/Users';
-import Home from './pages/Home';
-import Movies from './pages/Movies';
+import routes from './routes';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -31,17 +30,13 @@ function App() {
         <Navbar />
         <div className="container">
           <Switch>
-            <Route path="/movies" exact>
-              <Movies />
-            </Route>
-
-            <Route path="/users" exact>
-              <Users />
-            </Route>
-
-            <Route path="/" exact>
-              <Home />
-            </Route>
+            {routes.map(route => {
+              return (
+                <Route key={route.path} path={route.path} exact>
+                  <route.component />
+                </Route>
+              );
+            })}
           </Switch>
         </div>
       </div>
