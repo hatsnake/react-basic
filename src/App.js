@@ -19,7 +19,6 @@ class App extends React.Component {
 function App() {
   const [movies, setMovies] = useState([]);
 
-
   const removeMovie = (id) => {
     setMovies(movies.filter(movie => {
       return movie.id !== id;
