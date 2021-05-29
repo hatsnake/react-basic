@@ -26,7 +26,7 @@ function App() {
   ]);
   
   useEffect(() => {
-    console.log('render');
+    //console.log('render');
   });
 
   const renderMovies = movies.map(movie => {
@@ -40,12 +40,16 @@ function App() {
     event.preventDefault();
 
     setMovies([
+      //...movies : 기존배열이 덮어지는 것을 방지
       ...movies,
       {
         title: movieTitle,
         year: movieYear,
       }
     ]);
+
+    setMovieTitle('');
+    setMovieYear('');
   };
 
   return (
