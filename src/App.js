@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Movie from "./components/Movie";
 
 // https://www.youtube.com/watch?v=UFtirvA6NDU&list=PLB7CpjPWqHOuf62H44TMkMIsqfkIzcEcX&index=5
 
@@ -24,10 +25,7 @@ function App() {
   const renderMovies = movies.map(movie => {
     //JSX형태로 리턴
     return (
-      <div className="movie" key={movie.title}>
-        <div className="movie-title">{movie.title}</div>
-        <div className="movie-year">{movie.year}</div>
-      </div>
+      <Movie movie={movie} key={movie.title} />
     );
   });
 
